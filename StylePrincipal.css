@@ -25,6 +25,14 @@ body{
     color:#ff69b4;
 }
 
+.content {
+    position: relative;
+    z-index: 1000;
+    margin-right: 15px;
+    margin-left: 250px; /* Ajusta este valor según el ancho real de tu SideBar */
+    padding-top: 10px;
+}
+
 .SideBar ul{
     list-style:none;
     padding: 0px;;
