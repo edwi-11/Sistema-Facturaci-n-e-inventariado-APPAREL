@@ -1,0 +1,128 @@
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background-color:#dbe7ea;
+}
+
+.SideBar{
+    width:240px;
+    height:100vh;
+    background-color:#f3e8ee;
+    border-right:1px solid #e0e0e0;
+    color:#110303;
+    padding:25px;
+    box-sizing:border-box;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.SideBar h1 {
+    font-size:24px;
+    margin-bottom:30px;
+    color:#ff69b4;
+}
+
+.SideBar ul{
+    list-style:none;
+    padding:0;
+}
+
+.SideBar ul li{
+    margin-bottom:20px;
+    
+}
+
+.SideBar ul a { 
+    text-decoration:none;
+}
+
+.SideBar ul li a{
+    text-decoration:none;
+    color:#110303;
+    font-size:18px;
+    transition:color 0.3s;
+}
+
+.ContenedorFacturas{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    margin-left:280px;
+    padding:20px 30px;
+}
+
+.TotalFacturas,
+.FacturasDia,
+.FacturasAnuladas{
+    border-left:5px solid #f06292;
+    background:#fff;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    padding:25px;
+    border-radius:22px;
+    width:220px;
+}
+
+span{
+    font-size:34px;
+    font-weight:bold;
+}
+
+.ContenedorInformacion{
+    display:flex;
+    gap:50px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    margin-left:280px;
+    padding:40px 30px;
+}
+
+.GraficoVentas{
+    background:#fff;
+    border-left:5px solid #ff69b4;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    padding:25px;
+    border-radius:22px;
+    width:450px;
+    min-height:320px;
+}
+
+img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+.AccesosRapidos{
+    background:#fff;
+    border-left:5px solid #ff69b4;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    padding:25px;
+    border-radius:22px;
+    width:280px;
+}
+
+.AccesosRapidos ul{
+    list-style:none;
+    padding:0;
+    margin-top:25px;
+}
+
+.AccesosRapidos button{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    background:#ff69b4;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.AccesosRapidos button:hover{
+    transform:scale(1.02);
+}
+
+
+

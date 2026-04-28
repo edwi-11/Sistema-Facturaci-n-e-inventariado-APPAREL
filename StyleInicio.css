@@ -1,11 +1,12 @@
 body { 
     margin: 0;
-    background-color: #ffe9f5;
+    background-color: #ffe9f5b2;
     display: flex;
     height: 100vh;
-    justify-content: center;   /* centra vertical */
-    align-items: center;       /* centra horizontal */
+    justify-content: center;   
+    align-items: center;
     font-family: Arial, sans-serif;
+    
 }
 
 * {
@@ -20,7 +21,7 @@ body {
 }
 
 .LogoInicio {
-    width: 250px; /* ajusta tamaño */
+    width: 250px; 
     margin-bottom: 20px;
 }
 
@@ -34,7 +35,6 @@ body {
 
 .sesion h1 {
     color: #333;
-    margin-bottom: 20px;
 }
 
 .sesion input {
