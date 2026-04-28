@@ -4,6 +4,8 @@ body{
     background-color:#dbe7ea;
 }
 
+
+
 .SideBar{
     width:240px;
     height:100vh;
@@ -25,12 +27,11 @@ body{
 
 .SideBar ul{
     list-style:none;
-    padding:0;
+    padding: 0px;;
 }
 
 .SideBar ul li{
     margin-bottom:20px;
-    
 }
 
 .SideBar ul a { 
