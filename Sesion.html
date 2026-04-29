@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <link rel="stylesheet" href="StyleInicio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -10,14 +11,27 @@
 
 <div class="Inicio">
 
-    <img src = "Imagenes/LogoLetras.png" alt="Logo" class="LogoInicio">
+    <img src = "Imagenes/logoSesion.png" alt="Logo" class="LogoInicio">
 
+    
 <div class = "sesion">
-    <h1>Iniciar Sesión</h1>
+
+    <div class="iconoSesion">
+      <i class="fa-solid fa-circle-user"></i>
+    </div>
+    <h1>Iniciar Sesión</h1  >
 <form>
-        <input type="text" name="username" placeholder="Usuario" required>
+    <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input  type="text" name="username" placeholder="Usuario" required>
+    </div>
+    <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
         <input type="password" name="password" placeholder="Contraseña" required>
+
+    </div>
         <a href="Dashboard.html" class="btn-login">Iniciar Sesión</a>
+    
     </form>
 </div>
 

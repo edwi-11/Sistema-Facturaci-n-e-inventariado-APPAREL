@@ -2,8 +2,8 @@ body{
     margin:0;
     font-family:Arial, sans-serif;
     background-color:#dbe7ea;
+    position: relative;
 }
-
 
 
 .SideBar{
@@ -44,6 +44,12 @@ body{
     font-size:18px;
     transition:color 0.3s;
 }
+
+.content {
+    margin-left:240px;
+    padding:20px;
+}
+
 
 .ContenedorFacturas{
     display:flex;
@@ -124,6 +130,5 @@ img{
 .AccesosRapidos button:hover{
     transform:scale(1.02);
 }
-
 
 

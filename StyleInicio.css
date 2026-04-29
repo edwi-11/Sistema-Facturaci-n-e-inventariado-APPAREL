@@ -9,9 +9,31 @@ body {
     
 }
 
+img {
+    height: 250px;
+    width: 400px;
+}
+
 * {
     box-sizing: border-box;
 }
+
+.iconoSesion {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 48px;
+    color: #ff69b4;
+}
+
+.iconoSesion i {
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 70px;
+}
+
 
 .Inicio {
     display: flex;
@@ -25,25 +47,43 @@ body {
     margin-bottom: 20px;
 }
 
+.input-box {
+    position: relative;
+    margin: 15px 0;
+}
+
+.input-box i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 12px 12px 42px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
 .sesion {
+    position: relative;
+    background: rgba (255,255,255,0.12);
     background-color: #fff;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 20px;
     text-align: center;
-    width: 45%;
+    width: 420px;
+
 }
 
 .sesion h1 {
     color: #333;
 }
 
-.sesion input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+
 
 .sesion button {
     width: 100%;
