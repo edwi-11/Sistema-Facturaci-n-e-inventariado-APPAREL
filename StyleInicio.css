@@ -1,3 +1,4 @@
+/* Estilo de fondo de la página de inicio/login */
 body { 
     margin: 0;
     background-color: #ffe9f5b2;
@@ -8,15 +9,16 @@ body {
     font-family: Arial, sans-serif;
     
 }
-
+/* ajuste para las imagenes principales[logotipo] */
 img {
     height: 250px;
     width: 400px;
 }
-
+/* reseteo del box-sizing para que no afecte el ancho de los elementos */
 * {
     box-sizing: border-box;
 }
+/*estilo para el icono de sesion */
 
 .iconoSesion {
     position: absolute;
@@ -26,7 +28,7 @@ img {
     font-size: 48px;
     color: #ff69b4;
 }
-
+/*detalles del icono de sesion */
 .iconoSesion i {
     background-color: #fff;
     border-radius: 50%;
@@ -34,24 +36,24 @@ img {
     font-size: 70px;
 }
 
-
+/*contenedor principal[organiaza]*/
 .Inicio {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
-
+/*espacio y tamaño para el logo */
 .LogoInicio {
     width: 250px; 
     margin-bottom: 20px;
 }
-
+/*manejo del campo de texto y posion de los iconos*/
 .input-box {
     position: relative;
     margin: 15px 0;
 }
-
+/*posion de los iconos dentro del campo de texto */
 .input-box i {
     position: absolute;
     left: 10px;
@@ -59,7 +61,7 @@ img {
     transform: translateY(-50%);
     color: #ccc;
 }
-
+/*estilo visual de los campos */
 .input-box input {
     width: 100%;
     padding: 12px 12px 12px 42px;
@@ -67,7 +69,7 @@ img {
     border-radius: 8px;
     outline: none;
 }
-
+/*definicion del color de fondo, bordes y ancho fijo  */
 .sesion {
     position: relative;
     background: rgba (255,255,255,0.12);
@@ -78,13 +80,13 @@ img {
     width: 420px;
 
 }
-
+/*color del titulo principal dentro del formulario*/
 .sesion h1 {
     color: #333;
 }
 
 
-
+/*boton de envio[color de fondo y diseño de pantalla]*/
 .sesion button {
     width: 100%;
     padding: 10px;
@@ -94,11 +96,11 @@ img {
     border-radius: 5px;
     cursor: pointer;
 }
-
+/*efecto visual */
 .sesion button:hover {
     background-color: #ff4fa3;
 }
-
+/*estilo para el boton de acceso[login]*/
 .btn-login {
     display: inline-block;
     width: 100%;
