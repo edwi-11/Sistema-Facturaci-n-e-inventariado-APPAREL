@@ -1,0 +1,46 @@
+.SideBar{
+    width:240px;
+    height:100vh;
+    background-color:#f3e8ee;
+    border-right:1px solid #e0e0e0;
+    color:#110303;
+    padding:25px;
+    box-sizing:border-box;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.SideBar h1 {
+    font-size:24px;
+    margin-bottom:30px;
+    color:#ff69b4;
+}
+
+.content {
+    position: relative;
+    z-index: 1000;
+    margin-right: 15px;
+    margin-left: 250px; 
+    padding-top: 10px;
+}
+
+.SideBar ul{
+    list-style:none;
+    padding: 0px;;
+}
+
+.SideBar ul li{
+    margin-bottom:20px;
+}
+
+.SideBar ul a { 
+    text-decoration:none;
+}
+
+.SideBar ul li a{
+    text-decoration:none;
+    color:#110303;
+    font-size:18px;
+    transition:color 0.3s;
+}
