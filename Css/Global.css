@@ -11,6 +11,14 @@
     left:0;
 }
 
+.SideBar i {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #0c0c0c;
+}
+
+
+
 .SideBar h1 {
     font-size:24px;
     margin-bottom:30px;
@@ -32,10 +40,12 @@
 
 .SideBar ul li{
     margin-bottom:20px;
+    padding: 5px;
 }
 
 .SideBar ul a { 
     text-decoration:none;
+    padding: 5px 10px;
 }
 
 .SideBar ul li a{
@@ -43,4 +53,15 @@
     color:#110303;
     font-size:18px;
     transition:color 0.3s;
+}
+
+.SideBar a{
+    display: block;
+    border-radius: 8px;
+    color: rgb(20, 19, 19);
+}
+
+.SideBar a:hover{
+    background-color: #ff69b4;
+    color: white;
 }
