@@ -151,7 +151,7 @@ input[readonly] {
 
 .save-btn { background: #f06292; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
 .print-btn { background: #4a90e2; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
-.cancel-btn { background: #ccc; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
+.cancel-btn { background: #f10505; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
 
 .delete-btn {
     background: none;
