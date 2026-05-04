@@ -3,7 +3,10 @@ body{
     font-family:Arial, sans-serif;
     background-color:#dbe7ea;
     position: relative;
+    overflow-y: auto;
 }
+
+
 
 .ContenedorFacturas i{
     color:#ff69b4;
@@ -34,6 +37,7 @@ body{
     border-radius:22px;
     width:300px;
     height: auto;
+    flex:1;
 }
 
 span{
@@ -72,7 +76,8 @@ img{
     box-shadow:0 4px 12px rgba(0,0,0,.08);
     padding:25px;
     border-radius:22px;
-    width:280px;
+    width:350px;
+    
 }
 
 .AccesosRapidos ul{
@@ -91,6 +96,7 @@ img{
     border-radius:10px;
     cursor:pointer;
     font-weight:bold;
+    align-items: center;
 }
 
 .AccesosRapidos button:hover{

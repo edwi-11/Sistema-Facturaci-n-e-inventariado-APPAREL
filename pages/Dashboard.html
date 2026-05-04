@@ -13,52 +13,50 @@
 
     <div id="sideBarContainer"></div>
 
-<div class= "principal">
+    <div class="principal">
 
-</div>
-    <div class="content">
+        <header class="content">
+            <h2>Bienvenido usuario</h2>
+            <h2>Dashboard</h2>
+        </header>
 
-        <h2>Bienvenido usuario</h2>
+        <div class="ContenedorFacturas">
+            <div class="TotalFacturas">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <h3>Total de Facturas</h3>
+                <p><span>150</span></p>
+            </div>
 
+            <div class="FacturasDia"> 
+                <i class="fa-solid fa-clock"></i>
+                <h3>Facturas del Día</h3>
+                <p><span>10</span></p>
+            </div>
 
-        <h2>Dashboard</h2>
-
-    </div>
-<div class = "ContenedorFacturas">
-        <div class = "TotalFacturas">
-            <i class="fa-solid fa-square-poll-vertical"></i>
-            <h3>Total de Facturas</h3>
-            <p><span>150</span></p>
+            <div class="FacturasAnuladas">
+                <i class="fa-solid fa-circle-xmark"></i>
+                <h3>Facturas Anuladas</h3>
+                <p><span>3</span></p>
+            </div>
         </div>
 
-        <div class = "FacturasDia"> 
-            <i class="fa-solid fa-clock"></i>
-            <h3>Facturas del Día</h3>
-            <p><span>10</span></p>
+        <div class="ContenedorInformacion">
+            <div class="GraficoVentas">
+                <h3>Ventas Mensuales</h3>
+                <img src="../img/GraficoVentas.png" alt="Gráfico de Ventas">
+            </div>
+
+            <div class="AccesosRapidos">
+                <h3>Accesos Rápidos</h3>
+                <ul>
+                    <li> <button>Crear Nueva Factura</button> </li>
+                    <li> <button>Ver Reportes</button> </li>
+                </ul>
+            </div>
         </div>
 
-        <div class = "FacturasAnuladas">
-            <i class="fa-solid fa-circle-xmark"></i>
-            <h3>Facturas Anuladas</h3>
-            <p><span>3</span></p>
-        </div>
-</div>
-
-<div class = "ContenedorInformacion">
-    <div class = "GraficoVentas">
-        <h3>Ventas Mensuales</h3>
-        <img src = "../img/GraficoVentas.png" alt="Gráfico de Ventas">
-        
     </div>
 
-    <div class = "AccesosRapidos">
-        <h3>Accesos Rápidos</h3>
-        <ul>
-            <li> <button>Crear Nueva Factura</button> </li>
-            <li> <button>Ver Reportes</button> </li>
-        </ul>
-    </div>
-</div>
 <script src="../js/SideBar.js"></script>
 </body>
 </html>

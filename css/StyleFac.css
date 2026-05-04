@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #dbe7ea;
+    color: #333;
+    height: 100vh;
+    
+}
+
+.principal {
+    margin-left: 260px; 
+    padding: 20px;
+}
+
+.content-header {
+    margin-bottom: 25px;
+}
+
+/* Contenedor Superior (Tarjetas) */
+.Contenedor1 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.Clientes, .Factura {
+    flex: 2; 
+    min-width: 300px;
+    background: #fff;
+    border-left: 5px solid #f06292;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.icon-title {
+    font-size: 1.5rem;
+    color: #f06292;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+/* Grupos de Input */
+.inputgrupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.inputgrupo label {
+    font-weight: 600;
+    color: #666;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+input[readonly] {
+    background-color: #f9f9f9;
+}
+
+.add-btn {
+    background: #f06292;
+    color: white;
+    border: none;
+    padding: 0 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Tabla y Sección Inferior */
+.Contenedor2 {
+    flex: 2;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.Facturacion {
+    width: 100%;
+    margin-top: 15px;
+    display: block;
+}
+
+.Facturacion th {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+}
+
+.Facturacion td {
+    padding: 10px;
+}
+
+.add-row-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Totales y Acciones */
+.Totales-Seccion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 10px;
+    gap:0px;
+}
+
+.total-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.total-item input {
+    width: 150px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.save-btn { background: #f06292; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
+.print-btn { background: #4a90e2; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
+.cancel-btn { background: #ccc; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; }
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
