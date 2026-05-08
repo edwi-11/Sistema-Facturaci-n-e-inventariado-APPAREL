@@ -1,12 +1,8 @@
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background-color:#dbe7ea;
-    position: relative;
-    overflow-y: auto;
+
+header h2{
+    margin-left:30px;
+    margin-top:0px;
 }
-
-
 
 .ContenedorFacturas i{
     color:#ff69b4;
@@ -33,11 +29,15 @@ body{
     border-left:5px solid #f06292;
     background:#fff;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
-    padding:25px;
+    padding:15px;
     border-radius:22px;
     width:300px;
-    height: auto;
+    height: 150px;
     flex:1;
+    background-color:rgb(255, 255, 255,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin: -40px 0px 0px -10px;
 }
 
 span{
@@ -51,17 +51,20 @@ span{
     flex-wrap:wrap;
     align-items:flex-start;
     margin-left:280px;
-    padding:40px 30px;
+    padding:10px 30px;
+    
 }
 
 .GraficoVentas{
-    background:#fff;
     border-left:5px solid #ff69b4;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
     padding:25px;
     border-radius:22px;
     width:450px;
     min-height:320px;
+    background-color:rgb(255, 255, 255,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 img{
@@ -71,13 +74,14 @@ img{
 }
 
 .AccesosRapidos{
-    background:#fff;
     border-left:5px solid #ff69b4;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
-    padding:25px;
+    padding:70px;
     border-radius:22px;
-    width:350px;
-    
+    width:350px; 
+    background-color:rgb(255, 255, 255,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);   
 }
 
 .AccesosRapidos ul{
@@ -97,6 +101,14 @@ img{
     cursor:pointer;
     font-weight:bold;
     align-items: center;
+    
+}
+
+.AccesosRapidos h3{
+    margin-top: 0;
+    margin-bottom:20px;
+    text-align: left;
+    
 }
 
 .AccesosRapidos button:hover{

@@ -1,14 +1,16 @@
 /* Estilo de fondo de la página de inicio/login */
 body { 
     margin: 0;
+    background-image: url(../img/FondoInicio.jpeg);
     background-color: #ffe9f5b2;
     display: flex;
     height: 100vh;
     justify-content: center;   
     align-items: center;
-    font-family: Arial, sans-serif;
-    
+    font-family: Arial, sans-serif;   
+   
 }
+
 /* ajuste para las imagenes principales[logotipo] */
 img {
     height: 250px;
@@ -19,7 +21,6 @@ img {
     box-sizing: border-box;
 }
 /*estilo para el icono de sesion */
-
 .iconoSesion {
     position: absolute;
     top: -35px;
@@ -30,12 +31,9 @@ img {
 }
 /*detalles del icono de sesion */
 .iconoSesion i {
-    background-color: #fff;
-    border-radius: 50%;
     padding: 10px;
     font-size: 70px;
 }
-
 /*contenedor principal[organiaza]*/
 .Inicio {
     display: flex;
@@ -72,20 +70,25 @@ img {
 /*definicion del color de fondo, bordes y ancho fijo  */
 .sesion {
     position: relative;
-    background: rgba (255,255,255,0.12);
-    background-color: #fff;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     width: 420px;
 
+    border: 1px solid rgba(255,255,255,0.3);
+
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 /*color del titulo principal dentro del formulario*/
 .sesion h1 {
     color: #333;
-}
-
-  
+}  
 /*boton de envio[color de fondo y diseño de pantalla]*/
 .sesion button {
     width: 100%;

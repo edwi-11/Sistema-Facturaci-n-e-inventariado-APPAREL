@@ -1,15 +1,36 @@
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-image: url(../img/FondoPantallas.png);
+    margin:0;
+    min-width: 100vh;
+    min-height: 100vh;
+    font-family:Arial, sans-serif;
+    background-color:#dbe7ea;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backgrund-attachment: fixed;
+}
+
+
+
 .SideBar{
-    width:240px;
-    height:100vh;
-    background-color:#f3e8ee;
-    border-right:1px solid #e0e0e0;
+    width:250px;
+    height:95vh;
+    background-color:rgb(255, 255, 255,0.7);
+    position:fixed;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 25px;
     color:#110303;
     padding:25px;
     box-sizing:border-box;
     position:fixed;
-    top:0;
-    left:0;
-
+    top: 20px;
+    left: 20px;;
 }
 
 .SideBar i {
@@ -17,8 +38,6 @@
     font-size: 20px;
     color: #0c0c0c;
 }
-
-
 
 .SideBar h1 {
     font-size:24px;
