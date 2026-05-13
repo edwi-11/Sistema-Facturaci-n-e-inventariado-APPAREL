@@ -1,7 +1,5 @@
 :root {
     --primary: #3b82f6;
-    --purple: #6d28d9;
-    --bg-gray: #f8fafc;
     --border: #e2e8f0;
     --text-main: #1e293b;
     --text-muted: #64748b;
@@ -16,40 +14,81 @@
 
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--bg-gray);
     color: var(--text-main);
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
 }
-
 .main-container {
-    width: 95%;
-    max-width: 900px;
+    margin-left: 300px;
+    padding: 20px;
+    width: calc(100% - 320px);
 }
 
-/* Etiqueta Morada Superior */
-.badge-header {
-    background-color: var(--purple);
-    color: var(--white);
-    display: inline-block;
-    padding: 5px 14px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    margin-bottom: 10px;
+/* Header */
+.Bienvenida {
+    margin-bottom: 25px;
+}
+
+.Bienvenida h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 180px;
+    height: 150px;
+    border-left: 5px solid #f06292;
+    background-color: rgb(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    color: #f06292;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 12px;
+}
+
+.stat-info h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    color: var(--text-muted);
+    font-size: 14px;
 }
 
 /* Tarjeta Principal */
 .main-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    border-left: 5px solid #f06292;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
     padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-/* Sección de Título y Botón Nuevo */
 .top-section {
     display: flex;
     justify-content: space-between;
@@ -73,20 +112,18 @@ body {
     transition: 0.2s;
 }
 
-.btn-add-client:hover {
-    background-color: #2563eb;
-}
+.btn-add-client:hover { background-color: #2563eb; }
 
-/* BUSCADOR ARREGLADO (Alineación derecha) */
+/* Buscador */
 .search-wrapper {
     display: flex;
-    justify-content: flex-end; /* Lo empuja a la derecha */
+    justify-content: flex-end;
     margin-bottom: 15px;
 }
 
 .search-group {
     position: relative;
-    width: 280px; /* Tamaño similar a tu captura */
+    width: 280px;
 }
 
 .search-group i {
@@ -105,19 +142,18 @@ body {
     border-radius: 8px;
     outline: none;
     font-size: 14px;
-    transition: 0.2s;
 }
 
 .search-group input:focus {
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
 }
 
-/* Tabla Estilizada */
+/* Tabla */
 .table-container {
     border: 1px solid var(--border);
     border-radius: 8px;
-    overflow: hidden; /* Mantiene los bordes redondeados */
+    overflow: hidden;
 }
 
 .data-table {
@@ -131,7 +167,6 @@ body {
     text-align: left;
     font-size: 14px;
     font-weight: 600;
-    color: var(--text-main);
 }
 
 .data-table td {
@@ -140,7 +175,6 @@ body {
     font-size: 14px;
 }
 
-/* Celdas de Acciones */
 .text-center { text-align: center; }
 
 .action-cells {
@@ -161,11 +195,7 @@ body {
 
 .btn-edit { color: #475569; }
 .btn-delete { color: #ef4444; }
-
-.btn-icon:hover {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-}
+.btn-icon:hover { background: #f8fafc; border-color: #cbd5e1; }
 
 /* Paginación */
 .pagination-footer {
@@ -192,6 +222,4 @@ body {
     border-color: var(--primary);
 }
 
-.page-number:hover:not(.active) {
-    background-color: #f1f5f9;
-}
+.page-number:hover:not(.active) { background-color: #f1f5f9; }

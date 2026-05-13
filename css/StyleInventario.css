@@ -1,0 +1,148 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    --pink-accent: #ff69b4;
+    --pink-light: #fff0f6;
+    --white: #ffffff;
+    --text-dark: #4a4a4a;
+    --shadow: 0 10px 25px rgba(255, 105, 180, 0.15);
+}
+
+
+.app-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    margin-left: 340px;
+    padding: 20px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin-top: 5px;
+}
+
+/* Stats Cards */
+.stats-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px 0;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 180px;
+    height: 150px;
+    border-left: 5px solid #f06292;
+    background-color: rgb(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--pink-light);
+    color: var(--pink-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    
+}
+
+/* Tabla y Contenedores */
+.content-card {
+    border-left: 5px solid #f06292;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    padding: 30px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin-top: 40px;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.search-box {
+    background: #fdf2f8;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-box input {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.btn-new {
+    background: #4a90e2; 
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Estilo de Tabla */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table th {
+    text-align: left;
+    padding: 15px;
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.custom-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Badges */
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.status-badge.stock { background: #dcfce7; color: #166534; }
+.status-badge.low { background: #fef3c7; color: #92400e; }
+
+/* Botones de acción */
+.btn-edit, .btn-delete {
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-edit { background: #f1f5f9; color: #64748b; }
+.btn-delete { background: #fee2e2; color: #ef4444; }
