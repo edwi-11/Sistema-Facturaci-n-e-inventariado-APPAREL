@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Sistema de Facturación</title>
+    <link rel="stylesheet" href="../css/Global.css">
+    <link rel="stylesheet" href="../css/StylePrincipal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <h2 class="menu-title">MENÚ</h2>
+            <nav>
+                <ul>
+                    <li><i class="fas fa-home"></i> Dashboard</li>
+                    <li class="active"><i class="fas fa-boxes"></i> Inventario</li>
+                    <li><i class="fas fa-shopping-cart"></i> Ventas</li>
+                    <li><i class="fas fa-file-alt"></i> Reportes</li>
+                    <li><i class="fas fa-users"></i> Clientes</li>
+                    <li><i class="fas fa-user"></i> Usuarios</li>
+                    <li><i class="fas fa-cog"></i> Configuración</li>
+                    <li class="logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1>Inventario</h1>
+                <p>Administra tus productos y stock</p>
+            </header>
+
+            <section class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon icon-pink"><i class="fas fa-box"></i></div>
+                    <div class="stat-info">
+                        <p>Total Productos</p>
+                        <h3>152</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-pink"><i class="fas fa-check"></i></div>
+                    <div class="stat-info">
+                        <p>En Stock</p>
+                        <h3>112</h3>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon icon-pink"><i class="fas fa-exclamation"></i></div>
+                    <div class="stat-info">
+                        <p>Stock Bajo</p>
+                        <h3>18</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-card">
+                <div class="table-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar producto...">
+                    </div>
+                    <button class="btn-new">+ Nuevo Producto</button>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P001</td>
+                            <td>Camisa Casual</td>
+                            <td>Ropa</td>
+                            <td>25</td>
+                            <td>C$ 350.00</td>
+                            <td><span class="status-badge stock">En Stock</span></td>
+                            <td class="actions">
+                                <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>P002</td>
+                            <td>Pantalón Jeans</td>
+                            <td>Ropa</td>
+                            <td>8</td>
+                            <td>C$ 600.00</td>
+                            <td><span class="status-badge low">Stock Bajo</span></td>
+                            <td class="actions">
+                                <button class="btn-edit"><i class="fas fa-pen"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
