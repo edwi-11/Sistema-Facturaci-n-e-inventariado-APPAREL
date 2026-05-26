@@ -1,49 +1,38 @@
-<!--pantalla de inicio de sesion del sistema-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!--hoja de estilo principal-->
     <link rel="stylesheet" href="../css/StyleInicio.css">
-    <!--libreria de iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!--configuracion de caracteres-->
     <meta charset="UTF-8">
-    <!--diseño responsivo-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--titulo del sitema-->
-    <title>Iniciar Sesión </title>
+    <title>Iniciar Sesión</title>
 </head>
 <body>
-<!--contenedor principl-->
 <div class="Inicio">
-      <!--logo-->
-    <img src = "../img/logoSesion.png" alt="Logo" class="LogoInicio">
+    <img src="../img/logoSesion.png" alt="Logo" class="LogoInicio">
 
-    
-<div class = "sesion">
-     <!--icono superior del usuario-->
-    <div class="iconoSesion">
-      <i class="fa-solid fa-circle-user"></i>
+    <div class="sesion">
+        <div class="iconoSesion">
+            <i class="fa-solid fa-circle-user"></i>
+        </div>
+        <h1>Iniciar Sesión</h1>
+        
+        <form onsubmit="handleLoginSubmit(event)">
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="usuarioLogin" placeholder="Usuario" required>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="contraseña" placeholder="Contraseña" required>
+            </div>
+            
+            <button type="submit" class="btn-login" >Iniciar Sesión</button>
+        </form>
     </div>
-    <h1>Iniciar Sesión</h1  >
-<form>
-    <!--ingresar nombre del usuario-->
-    <div class="input-box">
-        <i class="fa-solid fa-user"></i>
-        <input  type="text" name="username" placeholder="Usuario" required>
-    </div>
-        <!--ingresar la contraseña del usuario-->
-    <div class="input-box">
-        <i class="fa-solid fa-lock"></i>
-        <input type="password" name="password" placeholder="Contraseña" required>
-
-    </div>
-        <a href="../Pages/Dashboard.html" class="btn-login">Iniciar Sesión</a>
-    
-    </form>
 </div>
 
-</div>
+<script src="../js/login.js"></script>
     
 </body>
 </html>
