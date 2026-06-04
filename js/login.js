@@ -7,10 +7,9 @@ async function handleLoginSubmit(event) {
     const login = Object.fromEntries(formData.entries());
 
     console.log('Login data:', login);
-    const endpoint = `${baseUrl}/authentication/login`;
+    const endpoint = `${baseUrl}/login/IniciarSesion`;
 
     try {
-        // ◄ Corregido: Se agregó 'const response = await'
         const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -22,8 +21,7 @@ async function handleLoginSubmit(event) {
         if (response.ok) {
             console.log('Login successful:', data);
             localStorage.setItem('token', data.token); 
-            window.location.href = "../Dashboard.html"; 
-
+            window.location.href = "../pages/Dashboard.html"; 
         } else {
             alert('Login failed: ' + (data.message || 'Credenciales incorrectas'));
         }
@@ -32,3 +30,5 @@ async function handleLoginSubmit(event) {
         alert('No se pudo conectar con el servidor.');
     }
 }
+
+document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);

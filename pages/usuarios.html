@@ -3,51 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Clientes</title>
+    <title>Gestión de Usuarios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/Global.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 <div id="sideBarContainer"></div>
-        
+
 <div class="main-container">
-    
-    <header class = "Bienvenida">
-            <h2>Usuarios</h2>
-        </header>
-        
+
+    <header class="Bienvenida">
+        <h2>Usuarios</h2>
+    </header>
+
     <div class="stats-container">
-
-    <div class="stat-card">
-        <div class="stat-icon">
-            <i class="fa-solid fa-users"></i>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h2 id="statTotal">--</h2>
+                <p>Total Usuarios</p>
+            </div>
         </div>
-
-        <div class="stat-info">
-            <h2>4</h2>
-            <p>Total Usuarios</p>
-        </div>
-    </div>
-
-    <div class="stat-card">
-        <div class="stat-icon active">
-            <i class="fa-solid fa-user-check"></i>
-        </div>
-
-        <div class="stat-info">
-            <h2>1</h2>
-            <p>Administradores</p>
+        <div class="stat-card">
+            <div class="stat-icon active">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+            <div class="stat-info">
+                <h2 id="statAdmins">--</h2>
+                <p>Administradores</p>
+            </div>
         </div>
     </div>
-        
-   
 
-</div>
     <div class="main-card">
         <div class="top-section">
             <h1 class="title">Usuarios</h1>
-            <button class="btn-add-client">
+            <button class="btn-add-client" id="btnNuevoUsuario">
                 <i class="fa-solid fa-plus"></i> Nuevo Usuario
             </button>
         </div>
@@ -55,7 +49,7 @@
         <div class="search-wrapper">
             <div class="search-group">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar Usuario...">
+                <input type="text" id="inputBuscar" placeholder="Buscar Usuario...">
             </div>
         </div>
 
@@ -64,61 +58,52 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
+                        <th>Cédula</th>
+                        <th>Usuario</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tablaUsuarios">
                     <tr>
-                        <td>Diego Calero</td>
-                        <td>9999-1111</td>
-                        <td>Diego@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Edwin Calero</td>
-                        <td>8888-2222</td>
-                        <td>Edwin@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Leyani Jarid</td>
-                        <td>7777-3333</td>
-                        <td>Leyani@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ricardo Benavides</td>
-                        <td>6666-4444</td>
-                        <td>Ricardo@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
+                        <td colspan="4" style="text-align:center;color:#aaa;padding:24px">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Cargando...
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="pagination-footer">
-            <button class="page-arrow">«</button>
-            <button class="page-number active">1</button>
-            <button class="page-number">2</button>
-            <button class="page-number">3</button>
-            <button class="page-arrow">»</button>
+        <div class="pagination-footer" id="paginacion"></div>
+    </div>
+</div>
+
+<div id="modalOverlay" class="hidden">
+    <div class="modal-card">
+        <h2 id="modalTitulo">Nuevo Usuario</h2>
+        <input type="hidden" id="u-cod">
+        <div class="modal-fields">
+            <input id="u-nombre"    placeholder="Nombre"/>
+            <input id="u-apellidos" placeholder="Apellidos"/>
+            <input id="u-cedula"    placeholder="Cédula"/>
+            <input id="u-login"     placeholder="Usuario Login"/>
+            <select id="u-codrol">
+                <option value="1">Administrador</option>
+                <option value="2" selected>Usuario</option>
+            </select>
+            <select id="u-estado">
+                <option value="1" selected>Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <input id="u-password" placeholder="Contraseña" type="password"/>
+        </div>
+        <div class="modal-actions">
+            <button id="btnCancelarModal">Cancelar</button>
+            <button id="btnGuardarModal">Agregar</button>
         </div>
     </div>
 </div>
+
 <script src="../js/SideBar.js"></script>
+<script src="../js/usuarios.js"></script>
 </body>
 </html>
