@@ -108,8 +108,7 @@ function abrirModal(usuario = null) {
     document.getElementById('u-login').value     = usuario?.usuarioLogin ?? '';
     document.getElementById('u-codrol').value    = usuario?.codRol ?? 2;
     document.getElementById('u-estado').value    = usuario?.estado ?? 1;
-    document.getElementById('u-password').value  = '';
-    document.getElementById('u-password').classList.toggle('hidden', esEdicion);
+    document.getElementById('u-password').style.display = esEdicion ? 'none' : 'block';
     document.getElementById('modalOverlay').classList.remove('hidden');
 }
 
@@ -128,7 +127,7 @@ async function guardarUsuario() {
         apellidos:    document.getElementById('u-apellidos').value.trim(),
         cedula:       document.getElementById('u-cedula').value.trim(),
         usuarioLogin: document.getElementById('u-login').value.trim(),
-        contraseña: document.getElementById('u-password').value.trim() || "SinCambio",
+        contraseña:   esEdicion ? '' : (document.getElementById('u-password')?.value.trim() ?? ''),
         codRol:       parseInt(document.getElementById('u-codrol').value) || 2,
         estado:       parseInt(document.getElementById('u-estado').value) || 1,
     };
@@ -136,7 +135,12 @@ async function guardarUsuario() {
     if (!body.nombre || !body.apellidos || !body.cedula || !body.usuarioLogin)
         return mostrarToast('Completá todos los campos', 'error');
 
-    const url    = esEdicion ? `${baseUrl}/Usuarios/ActualizarUsuario/${cod}` : `${baseUrl}/Usuarios/AgregarUsuario`;
+    if (!esEdicion && !body.contraseña)
+        return mostrarToast('La contraseña es requerida', 'error');
+
+    const url    = esEdicion
+        ? `${baseUrl}/Usuarios/ActualizarUsuario/${cod}`
+        : `${baseUrl}/Usuarios/AgregarUsuario`;
     const method = esEdicion ? 'PUT' : 'POST';
 
     try {
