@@ -208,3 +208,86 @@ body {
     gap: 10px;
     margin-top: 8px;
 }
+
+/* =========================
+   TABLETS
+========================= */
+@media (max-width: 1024px) {
+
+    .SideBar {
+        width: 220px;
+        padding: 20px;
+    }
+
+    .content {
+        margin-left: 260px;
+        margin-right: 10px;
+    }
+
+    .SideBar ul li a {
+        font-size: 16px;
+    }
+}
+
+/* =========================
+   CELULARES
+========================= */
+@media (max-width: 768px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .SideBar {
+        position: relative;
+        width: calc(100% - 20px);
+        height: auto;
+        top: 10px;
+        left: 10px;
+        margin: 0;
+        padding: 20px;
+        border-radius: 25px;
+    }
+
+    .content {
+        margin: 10px;
+        width: calc(100% - 20px);
+        padding-top: 10px;
+        box-sizing: border-box;
+    }
+
+    .SideBar h1 {
+        font-size: 22px;
+    }
+
+    .SideBar ul li {
+        margin-bottom: 10px;
+    }
+
+    .SideBar ul li a {
+        font-size: 16px;
+    }
+
+    /* Modales */
+    .modal-card,
+    #modalOverlay > div {
+        width: 95%;
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .modal-actions,
+    #modalOverlay > div > div:last-child {
+        flex-direction: column;
+    }
+
+    #btnCancelarModal,
+    #btnGuardarModal {
+        width: 100%;
+    }
+
+    #modalOverlay input,
+    #modalOverlay select {
+        font-size: 16px;
+    }
+}

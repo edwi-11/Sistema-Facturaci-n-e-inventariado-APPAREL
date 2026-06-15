@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:7006/api";
+const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net";
 let usuariosList = [];
 let paginaActual = 1;
 const porPagina = 4;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarUsuarios() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`${baseUrl}/Usuarios/ObtenerUsuarios`, {
+        const response = await fetch(`${baseUrl}/api/Usuarios/ObtenerUsuarios`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) throw new Error(`Error ${response.status}`);
@@ -139,8 +139,8 @@ async function guardarUsuario() {
         return mostrarToast('La contraseña es requerida', 'error');
 
     const url    = esEdicion
-        ? `${baseUrl}/Usuarios/ActualizarUsuario/${cod}`
-        : `${baseUrl}/Usuarios/AgregarUsuario`;
+        ? `${baseUrl}/api/Usuarios/ActualizarUsuario/${cod}`
+        : `${baseUrl}/api/Usuarios/AgregarUsuario`;
     const method = esEdicion ? 'PUT' : 'POST';
 
     try {

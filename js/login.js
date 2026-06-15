@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:7006/api";
+const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net";
 
 async function handleLoginSubmit(event) {
     event.preventDefault();
@@ -7,7 +7,7 @@ async function handleLoginSubmit(event) {
     const login = Object.fromEntries(formData.entries());
 
     console.log('Login data:', login);
-    const endpoint = `${baseUrl}/login/IniciarSesion`;
+    const endpoint = `${baseUrl}/api/login/IniciarSesion`;
 
     try {
         const response = await fetch(endpoint, {
