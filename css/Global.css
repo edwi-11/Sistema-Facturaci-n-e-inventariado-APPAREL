@@ -209,11 +209,23 @@ body {
     margin-top: 8px;
 }
 
+/* Botón hamburguesa — oculto en escritorio */
+.menu-toggle {
+    display: none;
+}
+
+.menu-overlay {
+    display: none;
+}
+
+.menu-close {
+    display: none;
+}
+
 /* =========================
    TABLETS
 ========================= */
 @media (max-width: 1024px) {
-
     .SideBar {
         width: 220px;
         padding: 20px;
@@ -238,26 +250,85 @@ body {
         overflow-x: hidden;
     }
 
+    /* Botón ☰ flotante */
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 10000;
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        border: none;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        cursor: pointer;
+        font-size: 20px;
+        color: #ff69b4;
+    }
+
+    /* Overlay oscuro */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 9000;
+    }
+
+    .menu-overlay.active {
+        display: block;
+    }
+
+    /* Sidebar: se desliza desde la izquierda */
     .SideBar {
-        position: relative;
-        width: calc(100% - 20px);
-        height: auto;
-        top: 10px;
-        left: 10px;
-        margin: 0;
-        padding: 20px;
-        border-radius: 25px;
+        position: fixed !important;
+        top: 0;
+        left: -300px; /* oculto por defecto */
+        width: 260px;
+        height: 100vh;
+        border-radius: 0 25px 25px 0;
+        z-index: 9500;
+        transition: left 0.3s ease;
+        padding: 25px 20px;
+        overflow-y: auto;
     }
 
+    /* Cuando está abierto */
+    .SideBar.open {
+        left: 0;
+    }
+
+    /* Botón X dentro del menú */
+    .menu-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        border: none;
+        background: rgba(255, 105, 180, 0.15);
+        color: #ff69b4;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* El contenido ocupa todo el ancho */
     .content {
-        margin: 10px;
-        width: calc(100% - 20px);
-        padding-top: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 70px 12px 12px 12px; /* espacio arriba para el botón ☰ */
+        width: 100%;
         box-sizing: border-box;
-    }
-
-    .SideBar h1 {
-        font-size: 22px;
     }
 
     .SideBar ul li {
@@ -265,29 +336,6 @@ body {
     }
 
     .SideBar ul li a {
-        font-size: 16px;
-    }
-
-    /* Modales */
-    .modal-card,
-    #modalOverlay > div {
-        width: 95%;
-        max-width: 95%;
-        padding: 20px;
-    }
-
-    .modal-actions,
-    #modalOverlay > div > div:last-child {
-        flex-direction: column;
-    }
-
-    #btnCancelarModal,
-    #btnGuardarModal {
-        width: 100%;
-    }
-
-    #modalOverlay input,
-    #modalOverlay select {
         font-size: 16px;
     }
 }
