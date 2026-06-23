@@ -146,3 +146,60 @@
 
 .btn-edit { background: #f1f5f9; color: #64748b; }
 .btn-delete { background: #fee2e2; color: #ef4444; }
+
+@media (max-width: 768px) {
+    .main-content,
+    .main-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 70px 12px 12px 12px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .stat-card {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+    }
+
+    .table-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-wrapper {
+        justify-content: stretch;
+    }
+
+    .search-group {
+        width: 100%;
+    }
+
+    .content-card {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    .top-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .btn-new,
+    .btn-add-client {
+        width: 100%;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .pagination-footer {
+        flex-wrap: wrap;
+    }
+}
