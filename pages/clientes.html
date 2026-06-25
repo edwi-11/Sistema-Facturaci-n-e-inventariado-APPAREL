@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/Global.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+    .modal-overlay.active { display: flex; }
+    .modal { background: #fff; border-radius: 12px; padding: 2rem; width: 420px; max-width: 95%; }
+    .modal-fields { display: flex; flex-direction: column; gap: 0.8rem; }
+    .modal-fields input { padding: 0.6rem 0.8rem; border: 1px solid #ddd; border-radius: 8px; width: 100%; box-sizing: border-box; }
+    .modal-actions { display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1.2rem; }
+    .btn-cancelar-modal { background: #eee; color: #333; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; }
+    .btn-guardar-modal { background: #4f46e5; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; }
+    </style>
 </head>
 <body>
 <div id="sideBarContainer"></div>

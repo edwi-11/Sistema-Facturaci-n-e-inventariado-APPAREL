@@ -6,7 +6,7 @@ let paginaActual = 1;
 const porPagina = 4;
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('modalOverlay').classList.add('hidden');
+    document.getElementById('modalOverlay').classList.remove('active');
     cargarUsuarios();
 
     document.getElementById('btnNuevoUsuario').addEventListener('click', () => abrirModal());
@@ -21,21 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function cargarUsuarios() {
     const token = localStorage.getItem('token');
-
     try {
         const response = await fetch(`${apiUrl}/ObtenerUsuarios`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
-
         if (!response.ok) throw new Error(`Error ${response.status}`);
-
         const data = await response.json();
-
         usuariosList = Array.isArray(data) ? data : (data.usuarios ?? data.data ?? []);
-
         renderTabla(usuariosList);
         actualizarStats();
-
     } catch (error) {
         console.error(error);
     }
@@ -43,7 +37,6 @@ async function cargarUsuarios() {
 
 function renderTabla(lista) {
     const tbody = document.getElementById('tablaUsuarios');
-
     const inicio = (paginaActual - 1) * porPagina;
     const pagina = lista.slice(inicio, inicio + porPagina);
 
@@ -58,9 +51,13 @@ function renderTabla(lista) {
             <td>${u.nombre ?? ''} ${u.apellidos ?? ''}</td>
             <td>${u.cedula ?? ''}</td>
             <td>${u.usuarioLogin ?? ''}</td>
-            <td>
-                <button onclick="editarUsuario(${u.codUsuario})">Editar</button>
-                <button onclick="eliminarUsuario(${u.codUsuario})">Eliminar</button>
+            <td class="action-cells">
+                <button class="btn-icon btn-edit" onclick="editarUsuario(${u.codUsuario})">
+                    <i class="fa-solid fa-pencil"></i>
+                </button>
+                <button class="btn-icon btn-delete" onclick="eliminarUsuario(${u.codUsuario})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
             </td>
         </tr>
     `).join('');
@@ -71,35 +68,28 @@ function renderTabla(lista) {
 function renderPaginacion(total) {
     const totalPaginas = Math.max(1, Math.ceil(total / porPagina));
     const footer = document.getElementById('paginacion');
-
-    let html = `<button onclick="cambiarPagina(${paginaActual - 1})" ${paginaActual === 1 ? 'disabled' : ''}>‹</button>`;
-
+    let html = `<button class="page-arrow" onclick="cambiarPagina(${paginaActual - 1})" ${paginaActual === 1 ? 'disabled' : ''}>«</button>`;
     for (let i = 1; i <= totalPaginas; i++) {
-        html += `<button onclick="cambiarPagina(${i})">${i}</button>`;
+        html += `<button class="page-number ${i === paginaActual ? 'active' : ''}" onclick="cambiarPagina(${i})">${i}</button>`;
     }
-
-    html += `<button onclick="cambiarPagina(${paginaActual + 1})" ${paginaActual === totalPaginas ? 'disabled' : ''}>›</button>`;
-
+    html += `<button class="page-arrow" onclick="cambiarPagina(${paginaActual + 1})" ${paginaActual === totalPaginas ? 'disabled' : ''}>»</button>`;
     footer.innerHTML = html;
 }
 
 function cambiarPagina(n) {
     const total = Math.ceil(usuariosList.length / porPagina);
     if (n < 1 || n > total) return;
-
     paginaActual = n;
     renderTabla(usuariosList);
 }
 
 function filtrarUsuarios(texto) {
     paginaActual = 1;
-
     const filtrado = usuariosList.filter(u =>
         (u.nombre ?? '').toLowerCase().includes(texto.toLowerCase()) ||
         (u.apellidos ?? '').toLowerCase().includes(texto.toLowerCase()) ||
         (u.usuarioLogin ?? '').toLowerCase().includes(texto.toLowerCase())
     );
-
     renderTabla(filtrado);
 }
 
@@ -111,19 +101,15 @@ function actualizarStats() {
 
 function abrirModal(usuario = null) {
     const esEdicion = usuario !== null;
-
-    document.getElementById('modalTitulo').textContent = esEdicion ? 'Editar' : 'Nuevo';
+    document.getElementById('modalTitulo').textContent = esEdicion ? 'Editar Usuario' : 'Nuevo Usuario';
     document.getElementById('btnGuardarModal').textContent = esEdicion ? 'Guardar' : 'Agregar';
-
     document.getElementById('u-cod').value = usuario?.codUsuario ?? '';
     document.getElementById('u-nombre').value = usuario?.nombre ?? '';
     document.getElementById('u-apellidos').value = usuario?.apellidos ?? '';
     document.getElementById('u-cedula').value = usuario?.cedula ?? '';
     document.getElementById('u-login').value = usuario?.usuarioLogin ?? '';
     document.getElementById('u-codrol').value = usuario?.codRol ?? 2;
-
     document.getElementById('u-password').style.display = esEdicion ? 'none' : 'block';
-
     document.getElementById('modalOverlay').classList.add('active');
 }
 
@@ -142,15 +128,15 @@ async function guardarUsuario() {
         apellidos: document.getElementById('u-apellidos').value.trim(),
         cedula: document.getElementById('u-cedula').value.trim(),
         usuarioLogin: document.getElementById('u-login').value.trim(),
-        contraseña: esEdicion ? '' : document.getElementById('u-password').value.trim(),
+        contraseña: esEdicion ? "sinCambio" : document.getElementById('u-password').value.trim(),
         codRol: parseInt(document.getElementById('u-codrol').value) || 2,
+        rolNombre: document.getElementById('u-codrol').value === '1' ? 'Administrador' : 'Usuario', 
         estado: 1
-    };
+};
 
     const url = esEdicion
         ? `${apiUrl}/ActualizarUsuario/${cod}`
         : `${apiUrl}/AgregarUsuario`;
-
     const method = esEdicion ? 'PUT' : 'POST';
 
     try {
@@ -162,12 +148,23 @@ async function guardarUsuario() {
             },
             body: JSON.stringify(body)
         });
-
         if (!response.ok) throw new Error(`Error ${response.status}`);
-
         cerrarModal();
         cargarUsuarios();
+    } catch (error) {
+        console.error(error);
+    }
+}
 
+async function editarUsuario(cod) {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await fetch(`${apiUrl}/VerUsuario/${cod}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (!response.ok) throw new Error(`Error ${response.status}`);
+        const data = await response.json();
+        abrirModal(Array.isArray(data) ? data[0] : (data.data ?? data));
     } catch (error) {
         console.error(error);
     }
@@ -175,27 +172,20 @@ async function guardarUsuario() {
 
 async function eliminarUsuario(cod) {
     if (!confirm('¿Eliminar usuario?')) return;
-
     const token = localStorage.getItem('token');
-
     try {
         const response = await fetch(`${apiUrl}/DarBajaUsuario/${cod}`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
-
         if (!response.ok) throw new Error(`Error ${response.status}`);
-
         cargarUsuarios();
-
     } catch (error) {
         console.error(error);
     }
 }
 
-function mostrarToast(msg) {
-    const t = document.createElement('div');
-    t.textContent = msg;
-    document.body.appendChild(t);
-    setTimeout(() => t.remove(), 3000);
-}
+// Exponer funciones globalmente para los onclick del HTML
+window.editarUsuario = editarUsuario;
+window.eliminarUsuario = eliminarUsuario;
+window.cambiarPagina = cambiarPagina;

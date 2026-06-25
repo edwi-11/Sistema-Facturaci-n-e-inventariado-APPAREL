@@ -1,5 +1,5 @@
-import { ClienteService } from '../js/shared/services/cliente.service.js';
-import { ClienteRequest } from '../js/shared/models/request/cliente.request.js';
+import { ClienteService } from './shared/services/cliente.service.js';
+import { ClienteRequest } from './shared/models/request/cliente.request.js';
 
 const service = new ClienteService();
 

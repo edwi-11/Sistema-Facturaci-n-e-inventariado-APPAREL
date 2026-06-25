@@ -1,4 +1,4 @@
-import HttpService from '../services/http.service.js';
+import HttpService from './http.service.js';
 import { ClienteResponse } from '../models/response/cliente.response.js';
 
 export class ClienteService extends HttpService {
