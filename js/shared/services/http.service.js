@@ -1,5 +1,5 @@
 export default class HttpService {
-    baseUrl = 'https://localhost:7006/api';
+    baseUrl = 'https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net';
 
     _getHeaders() {
         const token = localStorage.getItem('token');

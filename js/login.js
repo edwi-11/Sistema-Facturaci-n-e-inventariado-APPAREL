@@ -10,10 +10,9 @@ async function handleLoginSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const login = {
-        usuarioLogin: formData.get('UsuarioLogin'),
-        password: formData.get('Contraseña')
-    };
+    const login = Object.fromEntries(formData.entries());
+
+    console.log('Login data:', login);
 
     const endpoint = `${baseUrl}/api/login/IniciarSesion`;
 
