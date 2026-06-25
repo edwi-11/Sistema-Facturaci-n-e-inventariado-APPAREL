@@ -121,20 +121,17 @@ btnGuardar.addEventListener('click', async () => {
 });
 
 // Editar
-window.editarCliente = async (id) => {
-    try {
-        const c = await service.getClienteById(id);
-        inputId.value           = c.codCliente;
-        inputNombre.value       = c.nombre ?? '';
-        inputApellido.value     = c.apellido ?? '';
-        inputTelefono.value     = c.numeroTelefono ?? '';
-        inputCedula.value       = c.cedula ?? '';
-        inputNumeroCompra.value = c.numeroCompra ?? '';
-        abrirModal('Editar Cliente');
-    } catch (e) {
-        alert('Error al cargar cliente: ' + e.message);
-        console.error('Error al editar cliente:', e);
-    }
+window.editarCliente = (id) => {
+    const c = todosLosClientes.find(c => c.codCliente === id);
+    if (!c) { alert("Cliente no encontrado"); return; }
+
+    inputId.value           = c.codCliente;
+    inputNombre.value       = c.nombre ?? '';
+    inputApellido.value     = c.apellido ?? '';
+    inputTelefono.value     = c.numeroTelefono ?? '';
+    inputCedula.value       = c.cedula ?? '';
+    inputNumeroCompra.value = c.numeroCompra ?? '';
+    abrirModal('Editar Cliente');
 };
 
 // Eliminar

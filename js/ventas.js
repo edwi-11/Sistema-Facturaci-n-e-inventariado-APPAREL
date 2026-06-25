@@ -1,8 +1,9 @@
 import { ClienteService } from './shared/services/cliente.service.js';
+import { ClienteRequest } from './shared/models/request/cliente.request.js';
 
 const clienteService = new ClienteService();
 
-// ── ELEMENTOS DEL DOM ──────────────────────────────────────
+// ELEMENTOS DEL DOM 
 const telefonoInput     = document.getElementById("telefonoCliente");
 const nombreInput       = document.getElementById("nombreCliente");
 const descuentoInput    = document.getElementById("descuentoCliente");
@@ -33,7 +34,7 @@ if (fechaInput) {
     fechaInput.value = hoy;
 }
 
-// ── CLIENTE POR TELÉFONO ───────────────────────────────────
+// CLIENTE POR TELÉFONO 
 telefonoInput.addEventListener("blur", async () => {
     const telefono = telefonoInput.value.trim();
     if (!telefono) return;
@@ -46,11 +47,11 @@ telefonoInput.addEventListener("blur", async () => {
     } catch (e) {
         nombreInput.value    = "";
         descuentoInput.value = "";
-        alert("Cliente no encontrado. Puedes registrarlo con el botón +");
+        alert("Cliente no encontrado. Puedes resgistrarlo como nuevo.");
     }
 });
 
-// ── AGREGAR FILA DE PRODUCTO ───────────────────────────────
+// AGREGAR FILA DE PRODUCTO 
 btnAgregarProducto.addEventListener("click", () => {
     agregarFilaProducto();
 });
@@ -87,7 +88,7 @@ function agregarFilaProducto(datos = {}) {
     codigoInput.focus();
 }
 
-// ── BUSCAR PRODUCTO POR CÓDIGO (puedes conectar tu servicio) ──
+// BUSCAR PRODUCTO POR CÓDIGO 
 async function buscarProductoPorCodigo(row) {
     const codigo = row.querySelector(".codigo").value.trim();
     if (!codigo) return;
@@ -103,7 +104,7 @@ async function buscarProductoPorCodigo(row) {
     // }
 }
 
-// ── CALCULAR TOTALES ───────────────────────────────────────
+//  CALCULAR TOTALES 
 function calcularTotal() {
     let subtotal = 0;
 
@@ -135,7 +136,7 @@ document.addEventListener("input", (e) => {
     }
 });
 
-// ── MODAL CONFIRMAR GUARDAR ────────────────────────────────
+//  MODAL CONFIRMAR GUARDAR 
 btnGuardar.addEventListener("click", () => {
     if (!validarVenta()) return;
     modalConfirmar.classList.remove("hidden");
@@ -167,19 +168,16 @@ btnSi.addEventListener("click", async () => {
 
     // TODO: await ventaService.guardar(venta);
 
-    alert("✅ Venta guardada correctamente");
+    alert("Venta guardada correctamente");
 });
 
 btnNo.addEventListener("click", () => {
     modalConfirmar.classList.add("hidden");
 });
 
-// ── IMPRIMIR ───────────────────────────────────────────────
-btnImprimir.addEventListener("click", () => {
-    window.print();
-});
 
-// ── CANCELAR / LIMPIAR ────────────────────────────────────
+
+// CANCELAR / LIMPIAR 
 btnCancelar.addEventListener("click", () => {
     if (confirm("¿Deseas cancelar y limpiar el formulario?")) {
         limpiarFormulario();
@@ -196,7 +194,7 @@ function limpiarFormulario() {
     totalEl.value        = "0.00";
 }
 
-// ── MODAL BUSCAR PRODUCTOS ─────────────────────────────────
+//  MODAL BUSCAR PRODUCTOS 
 cerrarProductos.addEventListener("click", () => {
     modalProductos.classList.add("hidden");
 });
@@ -210,10 +208,46 @@ buscarProductoInput.addEventListener("input", () => {
         Conecta tu ProductoService para buscar "${q}"</p>`;
 });
 
-// ── NUEVO CLIENTE ──────────────────────────────────────────
+// NUEVO CLIENTE
 btnNuevoCliente.addEventListener("click", () => {
-    // TODO: abrir tu modal/CRUD de clientes
-    alert("Abre aquí tu modal de nuevo cliente");
+    document.getElementById("modalNuevoCliente").classList.remove("hidden");
+});
+
+document.getElementById("btnCancelarCliente").addEventListener("click", () => {
+    document.getElementById("modalNuevoCliente").classList.add("hidden");
+});
+
+document.getElementById("btnGuardarCliente").addEventListener("click", async () => {
+    const nombre   = document.getElementById("ncNombre").value.trim();
+    const apellido = document.getElementById("ncApellido").value.trim();
+
+    if (!nombre || !apellido) {
+        alert("Nombre y apellido son obligatorios.");
+        return;
+    }
+
+    const request = new ClienteRequest(
+        nombre,
+        apellido,
+        parseInt(document.getElementById("ncTelefono").value) || null,
+        document.getElementById("ncCedula").value.trim() || null,
+        null
+    );
+
+    try {
+        await clienteService.createCliente(request);
+        alert("Cliente creado correctamente");
+        document.getElementById("modalNuevoCliente").classList.add("hidden");
+
+        // Autorellenar el teléfono y nombre en el formulario
+        const tel = document.getElementById("ncTelefono").value.trim();
+        telefonoInput.value = tel;
+        nombreInput.value   = `${nombre} ${apellido}`;
+        descuentoInput.value = 0;
+
+    } catch (e) {
+        alert("Error al crear cliente: " + e.message);
+    }
 });
 
 // ── VALIDACIÓN BÁSICA ──────────────────────────────────────
