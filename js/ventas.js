@@ -1,7 +1,9 @@
 import { ClienteService } from './shared/services/cliente.service.js';
 import { ClienteRequest } from './shared/models/request/cliente.request.js';
+import HttpService from './shared/services/http.service.js';
 
 const clienteService = new ClienteService();
+const http = new HttpService(); 
 
 // ELEMENTOS DEL DOM 
 const telefonoInput     = document.getElementById("telefonoCliente");
@@ -91,17 +93,21 @@ function agregarFilaProducto(datos = {}) {
 // BUSCAR PRODUCTO POR CÓDIGO 
 async function buscarProductoPorCodigo(row) {
     const codigo = row.querySelector(".codigo").value.trim();
-    if (!codigo) return;
+    if (!codigo || codigo <= 0) return;
 
-    // TODO: conectar con tu ProductoService
-    // try {
-    //     const producto = await productoService.getByCodigo(codigo);
-    //     row.querySelector(".nombre").value = producto.nombre;
-    //     row.querySelector(".precio").value  = producto.precio;
-    //     calcularTotal();
-    // } catch (e) {
-    //     alert("Producto no encontrado");
-    // }
+    try {
+        const productos = await http.get(`/api/Productos/ObtenerProductos/${codigo}`);
+const producto = productos[0];
+
+row.querySelector(".nombre").value = producto.nombre;
+row.querySelector(".precio").value = producto.precio;
+calcularTotal();
+
+    } catch (e) {
+        alert("Producto no encontrado");
+        row.querySelector(".nombre").value = "";
+        row.querySelector(".precio").value  = "";
+    }
 }
 
 //  CALCULAR TOTALES 
