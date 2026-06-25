@@ -43,6 +43,7 @@ function renderTabla(clientes) {
             <td>${c.nombreCompleto}</td>
             <td>${c.numeroTelefono ?? '-'}</td>
             <td>${c.cedula ?? '-'}</td>
+            <td>${c.numeroCompra ?? 0}</td>
             <td class="action-cells">
                 <button class="btn-icon btn-edit" onclick="editarCliente(${c.codCliente})">
                     <i class="fa-solid fa-pencil"></i>

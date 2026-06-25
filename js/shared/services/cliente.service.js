@@ -4,24 +4,24 @@ import { ClienteResponse } from '../models/response/cliente.response.js';
 export class ClienteService extends HttpService {
 
     async getClientes() {
-        const data = await this.get('/Cliente');
+        const data = await this.get('/api/Cliente');
         return data.map(item => ClienteResponse.fromJson(item));
     }
 
     async getClienteById(id) {
-        const data = await this.get(`/Cliente/${id}`);
+        const data = await this.get(`/api/Cliente/${id}`);
         return ClienteResponse.fromJson(data);
     }
 
     async createCliente(request) {
-        return await this.post('/Cliente', request.toJson());
+        return await this.post('/api/Cliente', request.toJson());
     }
 
     async updateCliente(id, request) {
-        return await this.put(`/Cliente/${id}`, request.toJson());
+        return await this.put(`/api/Cliente/${id}`, request.toJson());
     }
 
     async deleteCliente(id) {
-        return await this.delete(`/Cliente/${id}`);
+        return await this.delete(`/api/Cliente/${id}`);
     }
 }
