@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:7006"; 
+const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net"; 
 // función para decodificar JWT
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
