@@ -1,5 +1,5 @@
-const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net"; 
-// función para decodificar JWT
+const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net/api"; 
+
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -14,7 +14,7 @@ async function handleLoginSubmit(event) {
 
     console.log('Login data:', login);
 
-    const endpoint = `${baseUrl}/api/login/IniciarSesion`;
+    const endpoint = `${baseUrl}/Login/IniciarSesion`;
 
     try {
         const response = await fetch(endpoint, {
@@ -26,26 +26,11 @@ async function handleLoginSubmit(event) {
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Login successful:', data);
-
-            // guardar token
             localStorage.setItem('token', data.token);
-
-            // decodificar token
             const decoded = parseJwt(data.token);
-            console.log("TOKEN DECODED:", decoded);
-
-            // sacar rol 
             const rol = decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-
-            console.log("ROL:", rol);
-
-            // guardar rol para usarlo en el menú
             localStorage.setItem("rol", rol);
-
-            // redirigir al dashboard
             window.location.href = "../pages/Dashboard.html";
-
         } else {
             alert('Login failed: ' + (data.message || 'Credenciales incorrectas'));
         }
