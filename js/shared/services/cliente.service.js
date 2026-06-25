@@ -13,6 +13,11 @@ export class ClienteService extends HttpService {
         return ClienteResponse.fromJson(data);
     }
 
+    async getByTelefono(telefono) {
+        const data = await this.get(`/api/Cliente/telefono/${telefono}`);
+        return ClienteResponse.fromJson(data);
+    }
+
     async createCliente(request) {
         return await this.post('/api/Cliente', request.toJson());
     }

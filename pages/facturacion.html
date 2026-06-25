@@ -2,118 +2,153 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facturación</title>
+    <title>Nueva Venta</title>
+
     <link rel="stylesheet" href="../css/StyleFac.css">
     <link rel="stylesheet" href="../css/Global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    
 </head>
+
 <body>
 
-    <div id="sideBarContainer"></div>
-    
-    <div class="principal">
-        <header class="content-header">
-            <h2>Facturación / Nueva factura</h2>
-            <p>Aquí puedes crear nuevas facturas.</p>
-        </header>
+<div id="sideBarContainer"></div>
 
-        <div class="Contenedor1">
-            <!-- SECCIÓN CLIENTES -->
-            <div class="Clientes">
-                <i class="fa-solid fa-users icon-title"></i>
-                <h3>Datos del Cliente</h3>
+<div class="principal">
 
-                <div class="inputgrupo">
-                    <label for="Cliente">Cliente</label>
-                    <div class="input-row">
-                        <select name="Cliente">
-                            <option value="">Seleccionar cliente</option>
-                            <option value="1">Juan Pérez</option>
-                            <option value="2">María García</option>
-                        </select>
-                        <button class="add-btn"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-                </div>
+    <div class="content-header">
+        <h2>Nueva Venta</h2>
+    </div>
 
-                <div class="inputgrupo">
-                    <label for="NombreCliente">Nombre Completo</label>
-                    <input name="NombreCliente" type="text" placeholder="Nombre del cliente" readonly>
+    <!-- CONTENEDOR SUPERIOR: Cliente + Factura -->
+    <div class="Contenedor1">
+
+        <!-- TARJETA CLIENTE -->
+        <div class="Clientes">
+            <div class="icon-title"><i class="fa fa-user"></i></div>
+            <h3>Cliente</h3>
+
+            <div class="inputgrupo">
+                <label for="telefonoCliente">Teléfono</label>
+                <div class="input-row">
+                    <input id="telefonoCliente" type="text" placeholder="Buscar por teléfono">
+                    <button class="add-btn" id="btnNuevoCliente" title="Nuevo cliente">
+                        <i class="fa fa-user-plus"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- SECCIÓN DETALLES FACTURA -->
-            <div class="Factura">
-                <i class="fa-solid fa-file-invoice icon-title"></i>
-                <h3>Detalles de la Factura</h3>
-                
-                <div class="inputgrupo">
-                    <label>Número de Factura</label>
-                    <input type="text" value="FAC-001" readonly>
-                </div>
-<div class="fechas">
-                <div class="inputgrupo">
-                    <label>Fecha</label>
-                    <input type="date" value="2026-05-10">
-                </div>
+            <div class="inputgrupo">
+                <label for="nombreCliente">Nombre</label>
+                <input id="nombreCliente" type="text" placeholder="Nombre del cliente" readonly>
+            </div>
 
-                <div class="inputgrupo">
-                    <label>Vencimiento</label>
-                    <input type="date" value="2026-06-10">
-                </div>
-</div>
+            <div class="inputgrupo">
+                <label for="descuentoCliente">Descuento (%)</label>
+                <input id="descuentoCliente" type="text" placeholder="0" readonly>
             </div>
         </div>
 
-        <!-- TABLA DE PRODUCTOS -->
-        <div class="Contenedor2">
-            <h3>Detalle de Productos</h3>
-            <table class="Facturacion">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Producto</th>
-                        <th>Cant.</th>
-                        <th>Precio</th>
-                        <th>Total</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" placeholder="Código del producto"></td> </td>
-                        <td><input type="text" placeholder="Descripción" readonly></td>
-                        <td><input type="number" value="1" min="1"></td>
-                        <td><input type="number" placeholder="0.00" step="0.01"></td>
-                        <td><input type="number" placeholder="0.00" readonly></td>
-                        <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- TARJETA FACTURA -->
+        <div class="Factura">
+            <div class="icon-title"><i class="fa fa-file-invoice"></i></div>
+            <h3>Datos de Factura</h3>
 
-            <button class="add-row-btn">+ Agregar Producto</button>
-
-            <div class="Totales-Seccion">
-                <div class="resumen">
-                    <div class="total-item">
-                        <span>Subtotal:</span>
-                        <input type="number" placeholder="0.00" readonly>
-                    </div>
-                    <div class="total-item total-final">
-                        <span>Total a pagar:</span>
-                        <input type="number" placeholder="0.00" readonly>
-                    </div>
+            <div class="fechas">
+                <div class="inputgrupo">
+                    <label for="fechaVenta">Fecha</label>
+                    <input id="fechaVenta" type="date">
                 </div>
-
-                <div class="acciones">
-                    <button class="save-btn">Guardar</button>
-                    <button class="print-btn">Imprimir</button>
-                    <button class="cancel-btn">Cancelar</button>
+                <div class="inputgrupo">
+                    <label for="noFactura">No. Factura</label>
+                    <input id="noFactura" type="text" placeholder="001-001-0001" readonly>
                 </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CONTENEDOR INFERIOR: Tabla de productos + totales -->
+    <div class="Contenedor2">
+        <div class="icon-title"><i class="fa fa-box"></i></div>
+        <h3>Productos</h3>
+
+        <table class="Facturacion">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Cant.</th>
+                    <th>Precio</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tablaProductos"></tbody>
+        </table>
+
+        <button class="add-row-btn" id="btnAgregarProducto">
+            <i class="fa fa-plus"></i> Agregar producto
+        </button>
+
+        <!-- Totales -->
+        <div class="Totales-Seccion">
+            <div class="total-item">
+                <label>Subtotal:</label>
+                <input type="text" id="subtotalVenta" readonly value="0.00">
+            </div>
+            <div class="total-item">
+                <label>Descuento:</label>
+                <input type="text" id="descuentoVenta" readonly value="0.00">
+            </div>
+            <div class="total-item">
+                <label><strong>Total:</strong></label>
+                <input type="text" id="totalVenta" readonly value="0.00">
+            </div>
+
+            <div class="acciones">
+                <button class="save-btn" id="btnGuardarVenta">
+                    <i class="fa fa-save"></i> Guardar
+                </button>
+                <button class="print-btn" id="btnImprimir">
+                    <i class="fa fa-print"></i> Imprimir
+                </button>
+                <button class="cancel-btn" id="btnCancelar">
+                    Cancelar
+                </button>
             </div>
         </div>
     </div>
 
-    <script src="../js/SideBar.js"></script>
+</div>
+
+<!-- MODAL CONFIRMAR GUARDAR -->
+<div id="modalConfirmar" class="modal hidden">
+    <div class="modal-content">
+        <h3><i class="fa fa-question-circle" style="color:#f06292"></i> Confirmar venta</h3>
+        <p>¿Deseas guardar esta venta?</p>
+        <div class="modal-actions">
+            <button class="cancel-btn" id="btnNo">No</button>
+            <button class="save-btn" id="btnSi">Sí, guardar</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL BUSCAR PRODUCTOS -->
+<div id="modalProductos" class="modal hidden">
+    <div class="modal-content" style="min-width: 420px;">
+        <h3><i class="fa fa-search" style="color:#f06292"></i> Buscar producto</h3>
+        <input id="buscarProducto" type="text" placeholder="Buscar por código o nombre...">
+        <div id="listaProductos" style="max-height: 300px; overflow-y: auto; margin-top: 10px;"></div>
+        <div class="modal-actions">
+            <button class="cancel-btn" id="cerrarProductos">Cerrar</button>
+        </div>
+    </div>
+</div>
+<script src="../js/SideBar.js"></script>
+<script type="module" src="../js/ventas.js"></script>
+
+
 </body>
 </html>
