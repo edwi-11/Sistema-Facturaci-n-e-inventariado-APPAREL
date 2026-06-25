@@ -1,4 +1,3 @@
-
 body {
     overflow-y: auto;
     overflow-x: hidden;
@@ -26,9 +25,8 @@ body {
     color:#110303;
     padding:25px;
     box-sizing:border-box;
-    position:fixed;
     top: 20px;
-    left: 20px;;
+    left: 20px;
 }
 
 .SideBar i {
@@ -53,7 +51,7 @@ body {
 
 .SideBar ul{
     list-style:none;
-    padding: 0px;;
+    padding: 0px;
 }
 
 .SideBar ul li{
@@ -84,9 +82,11 @@ body {
     color: white;
 }
 
-/*Aqui comienza*/
+/* =====================
+   MODAL
+===================== */
 #modalOverlay {
-    display: flex;
+    display: none;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
@@ -95,8 +95,8 @@ body {
     justify-content: center;
 }
 
-#modalOverlay.hidden {
-    display: none !important;
+#modalOverlay.active {
+    display: flex;
 }
 
 #modalOverlay > div {
@@ -250,7 +250,6 @@ body {
         overflow-x: hidden;
     }
 
-    /* Botón ☰ flotante */
     .menu-toggle {
         display: flex;
         align-items: center;
@@ -272,7 +271,6 @@ body {
         color: #ff69b4;
     }
 
-    /* Overlay oscuro */
     .menu-overlay {
         display: none;
         position: fixed;
@@ -285,11 +283,10 @@ body {
         display: block;
     }
 
-    /* Sidebar: se desliza desde la izquierda */
     .SideBar {
         position: fixed !important;
         top: 0;
-        left: -300px; /* oculto por defecto */
+        left: -300px;
         width: 260px;
         height: 100vh;
         border-radius: 0 25px 25px 0;
@@ -299,12 +296,10 @@ body {
         overflow-y: auto;
     }
 
-    /* Cuando está abierto */
     .SideBar.open {
         left: 0;
     }
 
-    /* Botón X dentro del menú */
     .menu-close {
         display: flex;
         align-items: center;
@@ -322,11 +317,10 @@ body {
         cursor: pointer;
     }
 
-    /* El contenido ocupa todo el ancho */
     .content {
         margin-left: 0;
         margin-right: 0;
-        padding: 70px 12px 12px 12px; /* espacio arriba para el botón ☰ */
+        padding: 70px 12px 12px 12px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -339,3 +333,28 @@ body {
         font-size: 16px;
     }
 }
+
+.btn-cancelar-modal {
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 105, 180, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.btn-guardar-modal {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 10px;
+    background: #ff69b4;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-guardar-modal:hover { background: #e0559f; }
+.btn-cancelar-modal:hover { background: rgba(255, 105, 180, 0.15); }

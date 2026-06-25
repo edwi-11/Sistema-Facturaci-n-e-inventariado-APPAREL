@@ -1,5 +1,4 @@
-const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net";
-
+const baseUrl = "https://localhost:7006"; 
 // función para decodificar JWT
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
@@ -11,9 +10,10 @@ async function handleLoginSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const login = Object.fromEntries(formData.entries());
-
-    console.log('Login data:', login);
+    const login = {
+        usuarioLogin: formData.get('UsuarioLogin'),
+        password: formData.get('Contraseña')
+    };
 
     const endpoint = `${baseUrl}/api/login/IniciarSesion`;
 

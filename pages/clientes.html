@@ -11,55 +11,27 @@
 <body>
 <div id="sideBarContainer"></div>
 
-
-        
 <div class="main-container">
-    
-    <header class = "Bienvenida">
-            <h2>Clientes</h2>
-        </header>
+    <header class="Bienvenida">
+        <h2>Clientes</h2>
+    </header>
 
-     
     <div class="stats-container">
-
-    <div class="stat-card">
-        <div class="stat-icon">
-            <i class="fa-solid fa-users"></i>
-        </div>
-
-        <div class="stat-info">
-            <h2>120</h2>
-            <p>Total Clientes</p>
-        </div>
-    </div>
-
-    <div class="stat-card">
-        <div class="stat-icon active">
-            <i class="fa-solid fa-user-check"></i>
-        </div>
-
-        <div class="stat-info">
-            <h2>85</h2>
-            <p>Clientes Activos</p>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h2 id="totalClientes">0</h2>
+                <p>Total Clientes</p>
+            </div>
         </div>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon new">
-            <i class="fa-solid fa-user-plus"></i>
-        </div>
-
-        <div class="stat-info">
-            <h2>15</h2>
-            <p>Nuevos Clientes</p>
-        </div>
-    </div>
-
-</div>
     <div class="main-card">
         <div class="top-section">
             <h1 class="title">Clientes</h1>
-            <button class="btn-add-client">
+            <button class="btn-add-client" id="btnNuevoCliente">
                 <i class="fa-solid fa-plus"></i> Nuevo Cliente
             </button>
         </div>
@@ -67,7 +39,7 @@
         <div class="search-wrapper">
             <div class="search-group">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar cliente...">
+                <input type="text" id="inputBuscar" placeholder="Buscar cliente...">
             </div>
         </div>
 
@@ -75,62 +47,39 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th>Nombre Completo</th>
                         <th>Teléfono</th>
-                        <th>Correo</th>
+                        <th>Cédula</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Juan Pérez</td>
-                        <td>9999-1111</td>
-                        <td>juan@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>María López</td>
-                        <td>8888-2222</td>
-                        <td>maria@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Carlos Gómez</td>
-                        <td>7777-3333</td>
-                        <td>carlos@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ana Martínez</td>
-                        <td>6666-4444</td>
-                        <td>ana@email.com</td>
-                        <td class="action-cells">
-                            <button class="btn-icon btn-edit"><i class="fa-solid fa-pencil"></i></button>
-                            <button class="btn-icon btn-delete"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
+                <tbody id="tablaClientes">
+                    <tr><td colspan="4" style="text-align:center">Cargando...</td></tr>
                 </tbody>
             </table>
         </div>
+    </div>
+</div>
 
-        <div class="pagination-footer">
-            <button class="page-arrow">«</button>
-            <button class="page-number active">1</button>
-            <button class="page-number">2</button>
-            <button class="page-number">3</button>
-            <button class="page-arrow">»</button>
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <h2 id="modalTitulo">Nuevo Cliente</h2>
+        <div class="modal-fields">
+            <input type="hidden" id="clienteId">
+            <input type="text" id="inputNombre" placeholder="Nombre">
+            <input type="text" id="inputApellido" placeholder="Apellido">
+            <input type="number" id="inputTelefono" placeholder="Número de Teléfono">
+            <input type="text" id="inputCedula" placeholder="Cédula">
+            <input type="number" id="inputNumeroCompra" placeholder="Número de Compra (opcional)">
+        </div>
+        <div class="modal-actions">
+            <button class="btn-cancelar-modal" id="btnCancelar">Cancelar</button>
+            <button class="btn-guardar-modal" id="btnGuardar">Guardar</button>
         </div>
     </div>
 </div>
+
 <script src="../js/SideBar.js"></script>
+<script type="module" src="../js/cliente.js"></script>
 </body>
 </html>

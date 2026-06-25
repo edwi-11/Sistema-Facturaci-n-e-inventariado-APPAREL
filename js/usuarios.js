@@ -1,4 +1,4 @@
-const baseUrl = "https://apparelpos-cac6btffezf5g2cy.canadacentral-01.azurewebsites.net";
+const baseUrl = "https://localhost:7006/api";
 let usuariosList = [];
 let paginaActual = 1;
 const porPagina = 4;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function cargarUsuarios() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`${baseUrl}/api/Usuarios/ObtenerUsuarios`, {
+        const response = await fetch(`${baseUrl}/Usuarios/ObtenerUsuarios`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         if (!response.ok) throw new Error(`Error ${response.status}`);
@@ -107,15 +107,13 @@ function abrirModal(usuario = null) {
     document.getElementById('u-cedula').value    = usuario?.cedula ?? '';
     document.getElementById('u-login').value     = usuario?.usuarioLogin ?? '';
     document.getElementById('u-codrol').value    = usuario?.codRol ?? 2;
-    document.getElementById('u-estado').value    = usuario?.estado ?? 1;
     document.getElementById('u-password').style.display = esEdicion ? 'none' : 'block';
-    document.getElementById('modalOverlay').classList.remove('hidden');
+    document.getElementById('modalOverlay').classList.add('active');
 }
 
 function cerrarModal() {
-    document.getElementById('modalOverlay').classList.add('hidden');
+    document.getElementById('modalOverlay').classList.remove('active');
 }
-
 async function guardarUsuario() {
     const token     = localStorage.getItem('token');
     const cod       = document.getElementById('u-cod').value;
@@ -129,7 +127,7 @@ async function guardarUsuario() {
         usuarioLogin: document.getElementById('u-login').value.trim(),
         contraseña:   esEdicion ? '' : (document.getElementById('u-password')?.value.trim() ?? ''),
         codRol:       parseInt(document.getElementById('u-codrol').value) || 2,
-        estado:       parseInt(document.getElementById('u-estado').value) || 1,
+        estado:       1,
     };
 
     if (!body.nombre || !body.apellidos || !body.cedula || !body.usuarioLogin)
@@ -139,8 +137,8 @@ async function guardarUsuario() {
         return mostrarToast('La contraseña es requerida', 'error');
 
     const url    = esEdicion
-        ? `${baseUrl}/api/Usuarios/ActualizarUsuario/${cod}`
-        : `${baseUrl}/api/Usuarios/AgregarUsuario`;
+        ? `${baseUrl}/Usuarios/ActualizarUsuario/${cod}`
+        : `${baseUrl}/Usuarios/AgregarUsuario`;
     const method = esEdicion ? 'PUT' : 'POST';
 
     try {
