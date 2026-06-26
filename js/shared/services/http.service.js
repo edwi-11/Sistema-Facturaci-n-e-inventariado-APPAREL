@@ -17,6 +17,7 @@ export default class HttpService {
         });
         if (!response.ok) {
             const error = await response.json().catch(() => ({}));
+            console.log("ERROR DETALLE:", error);
             throw new Error(error.message || 'Error al obtener datos.');
         }
         return await response.json();
