@@ -5,7 +5,8 @@ export class ClienteResponse {
         apellido,
         numeroTelefono,
         cedula,
-        numeroCompra
+        numeroCompra,
+        descuento      
     ) {
         this.codCliente     = codCliente;
         this.nombre         = nombre;
@@ -13,6 +14,7 @@ export class ClienteResponse {
         this.numeroTelefono = numeroTelefono;
         this.cedula         = cedula;
         this.numeroCompra   = numeroCompra;
+        this.descuento      = descuento;  
     }
 
     static fromJson(json) {
@@ -22,7 +24,8 @@ export class ClienteResponse {
             json.apellido,
             json.numeroTelefono,
             json.cedula,
-            json.numeroCompra
+            json.numeroCompra,
+            json.descuento      
         );
     }
 

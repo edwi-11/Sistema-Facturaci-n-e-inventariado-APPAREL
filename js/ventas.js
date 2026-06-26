@@ -27,7 +27,13 @@ const btnNuevoCliente    = document.getElementById("btnNuevoCliente");
 const cerrarProductos    = document.getElementById("cerrarProductos");
 
 const fechaInput = document.getElementById("fechaVenta");
-if (fechaInput) fechaInput.value = new Date().toISOString().split("T")[0];
+if (fechaInput) {
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm   = String(hoy.getMonth() + 1).padStart(2, "0");
+    const dd   = String(hoy.getDate()).padStart(2, "0");
+    fechaInput.value = `${yyyy}-${mm}-${dd}`;
+}
 
 // CLIENTE
 telefonoInput.addEventListener("blur", async () => {
@@ -164,7 +170,7 @@ const codUsuario = parseInt(getCodUsuarioDelToken());
     try {
         console.log("VENTA:", JSON.stringify(venta));
         const res = await http.post("/Ventas/RegistrarVenta", venta);
-        alert(`Venta registrada correctamente. Código: ${res.codVenta}`);
+        alert(`Venta registrada correctamente`);
         limpiarFormulario();
         clienteActual = null;
     } catch (e) {
