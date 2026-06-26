@@ -180,8 +180,7 @@ const codUsuario = parseInt(getCodUsuarioDelToken());
 
 btnNo.addEventListener("click", () => modalConfirmar.classList.add("hidden"));
 
-// IMPRIMIR
-btnImprimir.addEventListener("click", () => window.print());
+
 
 // CANCELAR
 btnCancelar.addEventListener("click", () => {
