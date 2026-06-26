@@ -3,51 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventario - Sistema de Facturación</title>
+    <title>Inventario - ApparelWeb</title>
     <link rel="stylesheet" href="../css/Global.css">
     <link rel="stylesheet" href="../css/StyleInventario.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="app-container">
-       <div id="sideBarContainer"></div>
+        <div id="sideBarContainer"></div>
+
         <main class="main-content">
+
             <header class="header">
                 <h1>Inventario</h1>
                 <p>Administra tus productos y stock</p>
             </header>
 
+            <!-- Stats -->
             <section class="stats-container">
                 <div class="stat-card">
                     <div class="stat-icon icon-pink"><i class="fas fa-box"></i></div>
                     <div class="stat-info">
                         <p>Total Productos</p>
-                        <h3>152</h3>
+                        <h3 id="statTotal">0</h3>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon icon-pink"><i class="fas fa-check"></i></div>
                     <div class="stat-info">
                         <p>En Stock</p>
-                        <h3>112</h3>
+                        <h3 id="statEnStock">0</h3>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon icon-pink"><i class="fas fa-exclamation"></i></div>
                     <div class="stat-info">
-                        <p>Stock Bajo</p>
-                        <h3>18</h3>
+                        <p>Sin Stock</p>
+                        <h3 id="statSinStock">0</h3>
                     </div>
                 </div>
             </section>
 
+            <!-- Tabla -->
             <section class="content-card">
                 <div class="table-actions">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Buscar producto...">
+                        <input type="text" id="inputBuscar" placeholder="Buscar producto...">
                     </div>
-                    <button class="btn-new">+ Nuevo Producto</button>
+                    <button class="btn-new" id="btnNuevoProducto">+ Nuevo Producto</button>
                 </div>
 
                 <table class="custom-table">
@@ -55,43 +59,51 @@
                         <tr>
                             <th>Código</th>
                             <th>Producto</th>
-                            <th>Categoría</th>
+                            <th>Marca</th>
                             <th>Stock</th>
                             <th>Precio</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tablaProductos">
                         <tr>
-                            <td>P001</td>
-                            <td>Camisa Casual</td>
-                            <td>Ropa</td>
-                            <td>25</td>
-                            <td>C$ 350.00</td>
-                            <td><span class="status-badge stock">En Stock</span></td>
-                            <td class="actions">
-                                <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>P002</td>
-                            <td>Pantalón Jeans</td>
-                            <td>Ropa</td>
-                            <td>8</td>
-                            <td>C$ 600.00</td>
-                            <td><span class="status-badge low">Stock Bajo</span></td>
-                            <td class="actions">
-                                <button class="btn-edit"><i class="fas fa-pen"></i></button>
-                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            <td colspan="7" style="text-align:center;padding:24px">
+                                <i class="fas fa-spinner fa-spin"></i> Cargando...
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </section>
+
         </main>
     </div>
+
+    <!-- Modal Crear / Editar -->
+    <div id="modalOverlay">
+        <div class="modal-card">
+            <h2 id="modalTitulo">Nuevo Producto</h2>
+            <input type="hidden" id="productoId">
+            <div class="modal-fields">
+                <input type="text"   id="inputNombre"      placeholder="Nombre"/>
+                <input type="text"   id="inputDescripcion" placeholder="Descripción"/>
+                <input type="text"   id="inputTalla"       placeholder="Talla"/>
+                <input type="text"   id="inputMarca"       placeholder="Marca"/>
+                <input type="number" id="inputPrecio"      placeholder="Precio"/>
+                <input type="number" id="inputStock"       placeholder="Stock inicial"/>
+                <select id="inputEstado">
+                    <option value="1">En Stock</option>
+                    <option value="0">Sin Stock</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button id="btnCancelarModal">Cancelar</button>
+                <button id="btnGuardarModal">Guardar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="../js/SideBar.js"></script>
+    <script type="module" src="../js/inventario.js"></script>
 </body>
 </html>

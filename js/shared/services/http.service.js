@@ -42,8 +42,8 @@ export default class HttpService {
             body: JSON.stringify(body)
         });
         if (!response.ok) {
-            const error = await response.json().catch(() => ({}));
-            throw new Error(error.message || 'Error al actualizar datos.');
+            const error = await response.text().catch(() => '');
+            throw new Error(error || 'Error al actualizar datos.');
         }
         const text = await response.text();
         return text ? JSON.parse(text) : true;
