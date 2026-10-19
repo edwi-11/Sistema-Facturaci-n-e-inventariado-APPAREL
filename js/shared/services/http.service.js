@@ -1,5 +1,5 @@
 export default class HttpService {
-    baseUrl = 'apparelmovilapi-dgdpgjc5gafxfyfp.canadacentral-01.azurewebsites.net/api';
+    baseUrl = 'https://apparelmovilapi-dgdpgjc5gafxfyfp.canadacentral-01.azurewebsites.net/api';
 
     _getHeaders() {
         const token = localStorage.getItem('token');
